@@ -50,25 +50,14 @@ class TicTacToeController extends AbstractController
         $xCoordinate = $data->xCoordinate;
         $yCoordinate = $data->yCoordinate;
 
-
         $session = $request->getSession();
         $board = $session->get('board');
-        // print_r($this->board);
-
-        
-
-        $this->board->setBoard($board);
-
-        // // Validation
-        // $boardValidator = new BoardValidator;
-        // $boardValidator->isBoardValid($board);
-        // $boardValidator->isFieldValid($board, $xCoordinate, $yCoordinate);
+        $this->board->set($board);
 
         // Make move
         $this->board->setMove($xCoordinate, $yCoordinate, 'X');
 
         $game = new Game;
-
         if ($game->isGameEnded($this->board)) {
             $board = $session->set('board', $this->board->render());
             return new JsonResponse([
@@ -76,7 +65,7 @@ class TicTacToeController extends AbstractController
                 'gameResult' => 'You won.'
             ], 200);
         }
-        
+
         $cpu = new CPU;
         $moves = $cpu->getMove($this->board, $level);
         $this->board->setMove($moves[0], $moves[1], 'O');
@@ -85,10 +74,10 @@ class TicTacToeController extends AbstractController
         if ($game->isGameEnded($this->board)) {
             $result = $game->isGameEnded($this->board);
             $board = $session->set('board', $this->board->render());
+        } else {
+            $board = $session->set('board', $this->board->get());
         }
-
-        $board = $session->set('board', $this->board->get());
-
+        
         return new JsonResponse([
             'board' =>  $this->board->get(),
             'movesPC' => $moves,

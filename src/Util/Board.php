@@ -10,6 +10,12 @@ class Board
 {
     private $boardSize = 3;
     private $board;
+    private $validator;
+
+    public function __construct()
+    {
+    $this->validator = new BoardValidator;
+    }
     
     public function render()
     {
@@ -22,8 +28,9 @@ class Board
         return $this->board;
     }
 
-    public function setBoard($board)
+    public function set($board)
     {
+        $this->validator->isValid($board);
         $this->board = $board;
     }
 
@@ -39,6 +46,7 @@ class Board
 
     public function setMove($x, $y, $char)
     {
+        $this->validator->isMoveValid($this->board, $x, $y, $char);
         $this->board[$y][$x] = $char;
     }
 

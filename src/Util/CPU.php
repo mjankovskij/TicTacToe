@@ -121,8 +121,6 @@ class CPU
             }
         }
 
-
-
         if ($board->isMoveFree($moveX, $moveY)) {
             return [$moveX, $moveY];
         } else {
