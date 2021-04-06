@@ -36,11 +36,11 @@ class Game
             $lastValue = '';
             $sameCount = 0;
             foreach ($board->get() as $y => $_) {
-                if ($board->get()[$y][$x] !== '' && $lastValue === $board->get()[$y][$x]) {
+                if (!$board->isMoveFree($x, $y) && $lastValue === $board->getValue($x, $y)) {
                     $sameCount++;
                 } else {
                     $sameCount = 0;
-                    $lastValue = $board->get()[$y][$x];
+                    $lastValue = $board->getValue($x, $y);
                 }
                 if ($sameCount === $board->getSize()) {
                     if ($lastValue === 'X') {
@@ -56,11 +56,11 @@ class Game
         $lastValue = '';
         $sameCount = 0;
         foreach ($board->get() as $xy => $_) {
-            if ($board->get()[$xy][$xy] !== '' && $lastValue === $board->get()[$xy][$xy]) {
+            if (!$board->isMoveFree($xy, $xy) && $lastValue === $board->getValue($xy, $xy)) {
                 $sameCount++;
             } else {
                 $sameCount = 0;
-                $lastValue = $board->get()[$xy][$xy];
+                $lastValue = $board->getValue($xy, $xy);
             }
             if ($sameCount === $board->getSize()) {
                 if ($lastValue === 'X') {
@@ -75,11 +75,11 @@ class Game
         $lastValue = '';
         $sameCount = 0;
         foreach ($board->get() as $xy => $_) {
-            if ($board->get()[$xy][$board->getSize() - $xy] !== '' && $lastValue === $board->get()[$xy][$board->getSize() - $xy]) {
+            if (!$board->isMoveFree($board->getSize() - $xy,$xy) && $lastValue === $board->getValue($board->getSize() - $xy, $xy)) {
                 $sameCount++;
             } else {
                 $sameCount = 0;
-                $lastValue = $board->get()[$xy][$board->getSize() - $xy];
+                $lastValue = $board->getValue($board->getSize() - $xy, $xy);
             }
             if ($sameCount === $board->getSize()) {
                 if ($lastValue === 'X') {

@@ -25,7 +25,7 @@ class CPU
                 $usedCount = 0;
                 $count = 0;
                 foreach ($board->get() as $y => $_) {
-                    if ($board->getValue($x, $y) !== '') $usedCount++;
+                    if (!$board->isMoveFree($x, $y)) $usedCount++;
                     if ($board->getValue($x, $y) === 'X') $count++;
                 }
                 if ($count === $board->getSize() && $usedCount === $board->getSize()) $moveX = $x;
@@ -35,12 +35,12 @@ class CPU
             $usedCount = 0;
             $count = 0;
             foreach ($board->get() as $xy => $_) {
-                if ($board->getValue($xy, $xy) !== '') $usedCount++;
+                if (!$board->isMoveFree($xy, $xy)) $usedCount++;
                 if ($board->getValue($xy, $xy) === 'X') $count++;
             }
             if ($count === $board->getSize() && $usedCount === $board->getSize()) {
                 foreach ($board->get() as $xy => $_) {
-                    if ($board->getValue($xy, $xy) === '') {
+                    if ($board->isMoveFree($xy, $xy)) {
                         $moveX = $xy;
                         $moveY = $xy;
                     }
@@ -51,12 +51,12 @@ class CPU
             $usedCount = 0;
             $count = 0;
             foreach ($board->get() as $xy => $_) {
-                if ($board->getValue($xy, $board->getSize() - $xy) !== '') $usedCount++;
+                if (!$board->isMoveFree($xy, $board->getSize() - $xy)) $usedCount++;
                 if ($board->getValue($xy, $board->getSize() - $xy) === 'X') $count++;
             }
             if ($count === $board->getSize() && $usedCount === $board->getSize()) {
                 foreach ($board->get() as $xy => $_) {
-                    if ($board->getValue($board->getSize() - $xy, $xy) === '') {
+                    if ($board->isMoveFree($board->getSize() - $xy, $xy)) {
                         $moveX = $board->getSize() - $xy;
                         $moveY = $xy;
                     }
@@ -78,7 +78,7 @@ class CPU
                 $usedCount = 0;
                 $count = 0;
                 foreach ($board->get() as $y => $_) {
-                    if ($board->getValue($x, $y) !== '') $usedCount++;
+                    if (!$board->isMoveFree($x, $y)) $usedCount++;
                     if ($board->getValue($x, $y) === 'O') $count++;
                 }
                 if ($count === $board->getSize() && $usedCount === $board->getSize()) $moveX = $x;
@@ -88,12 +88,12 @@ class CPU
             $usedCount = 0;
             $count = 0;
             foreach ($board->get() as $xy => $_) {
-                if ($board->getValue($xy, $xy) !== '') $usedCount++;
+                if (!$board->isMoveFree($xy, $xy)) $usedCount++;
                 if ($board->getValue($xy, $xy) === 'O') $count++;
             }
             if ($count === $board->getSize() && $usedCount === $board->getSize()) {
                 foreach ($board->get() as $xy => $_) {
-                    if ($board->getValue($xy, $xy) === '') {
+                    if ($board->isMoveFree($xy, $xy)) {
                         $moveX = $xy;
                         $moveY = $xy;
                     }
@@ -104,19 +104,19 @@ class CPU
             $usedCount = 0;
             $count = 0;
             foreach ($board->get() as $xy => $_) {
-                if ($board->getValue($xy, $board->getSize() - $xy) !== '') $usedCount++;
+                if (!$board->isMoveFree($xy, $board->getSize() - $xy)) $usedCount++;
                 if ($board->getValue($xy, $board->getSize() - $xy) === 'O') $count++;
             }
             if ($count === $board->getSize() && $usedCount === $board->getSize()) {
                 foreach ($board->get() as $xy => $_) {
-                    if ($board->getValue($board->getSize() - $xy, $xy) === '') {
+                    if ($board->isMoveFree($board->getSize() - $xy, $xy)) {
                         $moveX = $board->getSize() - $xy;
                         $moveY = $xy;
                     }
                 }
             }
 
-            if ($board->getValue(intval($board->getSize()/2), intval($board->getSize()/2)) === '') {
+            if ($board->isMoveFree(intval($board->getSize()/2), intval($board->getSize()/2))) {
                 $moveX = $moveY = intval($board->getSize()/2);
             }
         }
