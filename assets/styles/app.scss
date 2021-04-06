@@ -52,7 +52,10 @@ button {
     color: rgb(255, 255, 255);
     cursor: pointer;
     &:hover {
-        color: rgb(72, 72, 72);
-        background: rgb(202, 230, 247);
+        background: rgb(31, 107, 154);
     }
+}
+
+a {
+    margin-left: 10px;
 }
