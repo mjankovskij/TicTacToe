@@ -1,3 +1,58 @@
+* {
+    margin: 0;
+    border-spacing: 0;
+}
+
 body {
-    background-color: lightgray;
+    background: rgb(235, 235, 235);
+    margin: 10px;
+}
+
+table {
+    background: rgb(202, 230, 247);
+    border: solid 1px rgb(134, 193, 230);
+    border-radius: 10px;
+    overflow: hidden;
+    color: rgb(52, 52, 52);
+    font-size: 24px;
+    margin: 10px;
+}
+
+td {
+    border: solid 1px rgb(134, 193, 230);
+    margin: 0;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+        background: rgb(202, 179, 134);
+    }
+}
+
+.gameover {
+    display: none;
+    margin-left: 10px;
+    &.active {
+        display: block;
+    }
+    .result {
+        font-size: 18px;
+        display: inline;
+    }
+}
+
+button {
+    display: inline;
+    background: rgb(97, 144, 174);
+    border: solid 1px rgb(134, 193, 230);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    &:hover {
+        color: rgb(72, 72, 72);
+        background: rgb(202, 230, 247);
+    }
 }

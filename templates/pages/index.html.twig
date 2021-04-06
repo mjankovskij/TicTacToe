@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<button onclick=window.location.href="{{ url('tictactoe') }}">Level 1 - Random</button>
+<button onclick=window.location.href="{{ url('tictactoe') }}/1">Level 2 - Hard</button>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<table>
+		{% for yCoordinate, yArray in board %}
+			<tr>
+				{% for xCoordinate, valueCoordinate in yArray %}
+					<td data-y={{ yCoordinate }} data-x={{ xCoordinate }} data-controller="tictactoe" data-action="click->tictactoe#move"></td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+    <div class="gameover">
+    <div class="result">You won!</div>
+     <button type="button" data-controller="tictactoe" data-action="click->tictactoe#replay">Play again?</button> 
+    </div>
+{% endblock %}
