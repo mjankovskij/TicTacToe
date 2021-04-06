@@ -6,7 +6,7 @@ use App\Util\Board;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 
-class TicTacToeTest extends WebTestCase
+class TicTacToeControllerTest extends WebTestCase
 {
     private $client;
 
