@@ -1,10 +1,10 @@
 # TicTacToe
   
 # Installation  
-$ git clone https://github.com/mjankovskij/TicTacToe.git
-$ cd TicTacToe
-$ composer require symfony/webpack-encore-bundle
-
+$ git clone https://github.com/mjankovskij/TicTacToe.git  
+$ cd TicTacToe  
+$ composer require symfony/webpack-encore-bundle  
+  
 # Run Using Symfony Server  
 $ bin/console server:run  
 And just visit the url: http://localhost:8000  
