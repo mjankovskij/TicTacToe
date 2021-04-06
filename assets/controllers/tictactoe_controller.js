@@ -24,7 +24,7 @@ export default class extends Controller {
                 }
             })
             .catch(function(error) {
-                console.log(error.response.data)
+                // console.log(error.response.data)
             });
     }
 
