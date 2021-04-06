@@ -6,7 +6,7 @@ $ cd TicTacToe
 $ composer require symfony/webpack-encore-bundle  
   
 # Run Using Symfony Server  
-$ bin/console server:run  
+$ symfony server:start
 And just visit the url: http://localhost:8000  
   
 # Test  
